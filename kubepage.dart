@@ -6,7 +6,7 @@ String file_name;
 String svc_name;
 String nodes_name;
 
-class docker extends StatelessWidget {
+class kubernetes extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
   @override
