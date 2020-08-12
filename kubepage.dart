@@ -38,7 +38,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   String dropdownValue1pods = 'create';
   String dropdownValue1svc = 'create';
   String dropdownValue1nodes = 'edit';
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -86,13 +85,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 dropdownValue1deployment = newValue;
               });
             },
-            items: <String>[
-              'get',
-              'describe',
-              'edit',
-              'delete',
-              'expose',
-            ].map<DropdownMenuItem<String>>((String value) {
+            items: <String>['get', 'describe', 'edit', 'delete', 'expose']
+                .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
@@ -100,28 +94,35 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             }).toList(),
           ),
         if (dropdownValue1deployment == 'get')
-          /*TextField(
+          TextField(
+            onChanged: (a) {
+              deploy_name = a;
+            },
+            decoration: InputDecoration(hintText: "Name for get"),
+            autocorrect: true,
+          ),
+        if (dropdownValue1deployment == 'describe')
+          TextField(
+            onChanged: (b) {
+              deploy_name = b;
+            },
+            decoration: InputDecoration(hintText: "Name of the deployment"),
+            autocorrect: true,
+          ),
+        if (dropdownValue1deployment == 'edit')
+          TextField(
             onChanged: (a) {
               deploy_name = a;
             },
             decoration: InputDecoration(hintText: "Name of deployment"),
-            autocorrect: true
-          ),*/
-          if (dropdownValue1deployment == 'edit')
-            TextField(
-              onChanged: (a) {
-                deploy_name = a;
-              },
-              decoration: InputDecoration(hintText: "name of the deployment"),
-              autocorrect: true,
-            ),
+            autocorrect: true,
+          ),
         if (dropdownValue1deployment == 'delete')
           TextField(
             onChanged: (a) {
               deploy_name = a;
             },
-            decoration:
-                InputDecoration(hintText: "Name of the deployment to delete"),
+            decoration: InputDecoration(hintText: "Name of deployment"),
             autocorrect: true,
           ),
         if (dropdownValue1deployment == 'expose')
@@ -129,8 +130,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             onChanged: (a) {
               deploy_name = a;
             },
-            decoration:
-                InputDecoration(hintText: "Name of the deployment to expose"),
+            decoration: InputDecoration(hintText: "Name of deployment"),
             autocorrect: true,
           ),
         if (dropdownValue1 == 'pods')
@@ -152,8 +152,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             items: <String>[
               'create',
               'get',
-              'edit',
               'delete',
+              'edit',
               'run',
               'expose',
             ].map<DropdownMenuItem<String>>((String value) {
@@ -162,47 +162,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: Text(value),
               );
             }).toList(),
-          ),
-        if (dropdownValue1pods == 'create')
-          TextField(
-            onChanged: (c) {
-              file_name = c;
-            },
-            decoration:
-                InputDecoration(hintText: "Name of the file to create pod"),
-            autocorrect: true,
-          ),
-        if (dropdownValue1pods == 'get')
-          /*TextField(
-            onChanged: (c) {
-              file_name = c;
-            },
-            decoration: InputDecoration(hintText: "Name of the pod"),
-            autocorrect: true,
-          ),*/
-          if (dropdownValue1pods == 'edit')
-            TextField(
-              onChanged: (d) {
-                pod_name = d;
-              },
-              decoration: InputDecoration(hintText: "Name of the pod to edit"),
-              autocorrect: true,
-            ),
-        if (dropdownValue1pods == 'run')
-          TextField(
-            onChanged: (c) {
-              file_name = c;
-            },
-            decoration: InputDecoration(hintText: "Name of the pod to run"),
-            autocorrect: true,
-          ),
-        if (dropdownValue1pods == 'expose')
-          TextField(
-            onChanged: (c) {
-              pod_name = c;
-            },
-            decoration: InputDecoration(hintText: "Name of the pod to expose"),
-            autocorrect: true,
           ),
         if (dropdownValue1 == 'svc')
           DropdownButton<String>(
@@ -220,29 +179,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 dropdownValue1svc = newValue;
               });
             },
-            items: <String>['edit', 'delete', 'get', 'describe']
-                .map<DropdownMenuItem<String>>((String value) {
+            items: <String>[
+              'get',
+              'edit',
+              'delete',
+              'describe',
+            ].map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
               );
             }).toList(),
-          ),
-        if (dropdownValue1svc == 'edit')
-          TextField(
-            onChanged: (d) {
-              svc_name = d;
-            },
-            decoration: InputDecoration(hintText: "Name of the svc to edit"),
-            autocorrect: true,
-          ),
-        if (dropdownValue1svc == 'delete')
-          TextField(
-            onChanged: (d) {
-              svc_name = d;
-            },
-            decoration: InputDecoration(hintText: "Name of the svc to delete"),
-            autocorrect: true,
           ),
         if (dropdownValue1 == 'nodes')
           DropdownButton<String>(
@@ -269,22 +216,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: Text(value),
               );
             }).toList(),
-          ),
-        if (dropdownValue1svc == 'edit')
-          TextField(
-            onChanged: (d) {
-              svc_name = d;
-            },
-            decoration: InputDecoration(hintText: "Name of the svc to edit"),
-            autocorrect: true,
-          ),
-        if (dropdownValue1svc == 'delete')
-          TextField(
-            onChanged: (d) {
-              nodes_name = d;
-            },
-            decoration: InputDecoration(hintText: "Name of the node to delete"),
-            autocorrect: true,
           ),
       ],
     );
